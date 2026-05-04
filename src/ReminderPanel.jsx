@@ -1,105 +1,102 @@
 import { useEffect, useState } from "react";
 
 export default function ReminderPanel() {
-  const [naam, setNaam] = useState("");
-  const [tijd, setTijd] = useState("09:00");
-  const [items, setItems] = useState(() =>
-    JSON.parse(localStorage.getItem("medicatieTijden") || "[]")
-  );
+  const [medicijn, setMedicijn] = useState("");
+  const [tijd, setTijd] = useState("08:00");
+
+  const [herinneringen, setHerinneringen] = useState(() => {
+    return JSON.parse(localStorage.getItem("vasteMedicatieTijden") || "[]");
+  });
 
   useEffect(() => {
-    localStorage.setItem("medicatieTijden", JSON.stringify(items));
-  }, [items]);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      const nu = new Date().toTimeString().slice(0, 5);
-      const vandaag = new Date().toDateString();
-
-      items.forEach((m) => {
-        if (m.tijd === nu && m.laatsteMelding !== vandaag) {
-          alert("⏰ Tijd voor medicatie: " + m.naam);
-          setItems((oud) =>
-            oud.map((x) =>
-              x.id === m.id ? { ...x, laatsteMelding: vandaag } : x
-            )
-          );
-        }
-      });
-    }, 30000);
-
-    return () => clearInterval(timer);
-  }, [items]);
+    localStorage.setItem("vasteMedicatieTijden", JSON.stringify(herinneringen));
+  }, [herinneringen]);
 
   function toevoegen() {
-    if (!naam.trim()) return;
-    setItems([
-      ...items,
+    if (!medicijn.trim()) return;
+
+    setHerinneringen([
+      ...herinneringen,
       {
         id: Date.now(),
-        naam: naam.trim(),
+        medicijn: medicijn.trim(),
         tijd,
         ingenomen: false,
-        laatsteMelding: ""
-      }
+      },
     ]);
-    setNaam("");
-    setTijd("09:00");
+
+    setMedicijn("");
+    setTijd("08:00");
+  }
+
+  function tijdAanpassen(id, nieuweTijd) {
+    setHerinneringen(
+      herinneringen.map((h) =>
+        h.id === id ? { ...h, tijd: nieuweTijd } : h
+      )
+    );
+  }
+
+  function verwijderen(id) {
+    setHerinneringen(herinneringen.filter((h) => h.id !== id));
   }
 
   return (
-    <div style={{
-      margin: "24px",
-      padding: "22px",
-      borderRadius: "22px",
-      background: "#1f2937",
-      color: "white"
-    }}>
-      <h2>⏰ Medicatie-herinneringen</h2>
-      <p>Stel per medicijn een vaste innametijd in.</p>
+    <section className="card">
+      <h2>⏰ Vaste medicatie-tijden</h2>
+      <p>
+        Vul zelf in hoe laat iemand zijn medicijnen wil innemen.
+        Bijvoorbeeld 08:00, 12:00, 18:00 of 22:00.
+      </p>
 
-      <input
-        value={naam}
-        onChange={(e) => setNaam(e.target.value)}
-        placeholder="Medicijnnaam, bijv. Amlodipine"
-        style={{ width:"100%", padding:"14px", margin:"8px 0", borderRadius:"14px" }}
-      />
+      <label>
+        Medicijnnaam
+        <input
+          value={medicijn}
+          onChange={(e) => setMedicijn(e.target.value)}
+          placeholder="Bijv. Amlodipine"
+        />
+      </label>
 
-      <input
-        type="time"
-        value={tijd}
-        onChange={(e) => setTijd(e.target.value)}
-        style={{ width:"100%", padding:"14px", margin:"8px 0", borderRadius:"14px" }}
-      />
+      <label>
+        Vaste innametijd
+        <input
+          type="time"
+          value={tijd}
+          onChange={(e) => setTijd(e.target.value)}
+        />
+      </label>
 
-      <button onClick={toevoegen} style={{
-        width:"100%", padding:"14px", borderRadius:"14px",
-        background:"#2563eb", color:"white", fontWeight:"bold", border:"none"
-      }}>
-        Herinnering toevoegen
+      <button onClick={toevoegen}>
+        Tijd toevoegen
       </button>
 
-      {items.map((m) => (
-        <div key={m.id} style={{
-          marginTop:"12px", padding:"14px", borderRadius:"16px",
-          background:"#111827"
-        }}>
-          <strong>{m.naam}</strong><br />
-          Dagelijks om {m.tijd}<br /><br />
+      <div style={{ marginTop: "16px" }}>
+        {herinneringen.length === 0 && (
+          <p>Nog geen vaste tijden ingesteld.</p>
+        )}
 
-          <button onClick={() =>
-            setItems(items.map(x => x.id === m.id ? { ...x, ingenomen: !x.ingenomen } : x))
-          }>
-            {m.ingenomen ? "Ingenomen ✓" : "Innemen"}
-          </button>
+        {herinneringen.map((h) => (
+          <div key={h.id} className="card" style={{ marginTop: "12px" }}>
+            <strong>{h.medicijn}</strong>
 
-          <button onClick={() =>
-            setItems(items.filter(x => x.id !== m.id))
-          } style={{ marginLeft:"8px" }}>
-            Verwijderen
-          </button>
-        </div>
-      ))}
-    </div>
+            <label>
+              Tijd aanpassen
+              <input
+                type="time"
+                value={h.tijd}
+                onChange={(e) => tijdAanpassen(h.id, e.target.value)}
+              />
+            </label>
+
+            <p>Dagelijks innemen om <strong>{h.tijd}</strong></p>
+
+            <button onClick={() => verwijderen(h.id)}>
+              Verwijderen
+            </button>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }

@@ -1,0 +1,607 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #eef4f8;
+  color: #172033;
+}
+
+.app {
+  max-width: 1050px;
+  margin: auto;
+  padding: 16px;
+}
+
+.hero, .card {
+  background: white;
+  border-radius: 22px;
+  padding: 18px;
+  margin-bottom: 16px;
+  box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+}
+
+.hero {
+  background: linear-gradient(135deg, #dff3ff, #ffffff);
+}
+
+h1, h2, h3 {
+  margin-top: 0;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.stats div {
+  background: #eff6ff;
+  border-radius: 16px;
+  padding: 12px;
+  text-align: center;
+}
+
+.stats b {
+  display: block;
+  font-size: 28px;
+  color: #1d4ed8;
+}
+
+.stats span {
+  font-size: 14px;
+}
+
+.toprow {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  margin-bottom: 14px;
+}
+
+.tabs button {
+  background: #dbeafe;
+  color: #1e3a8a;
+}
+
+.tabs button.active {
+  background: #2563eb;
+  color: white;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+input, textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px;
+  border-radius: 15px;
+  border: 1px solid #cbd5e1;
+  font-size: 17px;
+}
+
+button {
+  border: 0;
+  border-radius: 15px;
+  padding: 13px 15px;
+  background: #2563eb;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.wide {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.medgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+  gap: 12px;
+}
+
+.medcard {
+  border: 1px solid #dbe4ee;
+  border-radius: 18px;
+  padding: 14px;
+  background: #f8fbff;
+}
+
+.medcard a {
+  display: block;
+  margin: 10px 0;
+  color: #2563eb;
+  font-weight: bold;
+}
+
+.delete {
+  background: #dc2626;
+  width: 100%;
+}
+
+.alert {
+  border-left: 8px solid #f59e0b;
+  background: #fff7ed;
+  padding: 12px;
+  border-radius: 14px;
+  margin-bottom: 10px;
+}
+
+.alert.hoog {
+  border-left-color: #dc2626;
+  background: #fef2f2;
+}
+
+.ok {
+  background: #ecfdf5;
+  padding: 12px;
+  border-radius: 14px;
+}
+
+.empty {
+  color: #64748b;
+}
+
+.warning {
+  background: #fff7ed;
+}
+
+.sharebox {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.share {
+  background: #0f766e;
+}
+
+.whatsapp {
+  background: #16a34a;
+}
+
+.email {
+  background: #7c3aed;
+}
+
+.copy {
+  background: #475569;
+}
+
+@media (max-width: 600px) {
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .toprow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.deeltekst {
+  text-align: center;
+  font-weight: bold;
+  margin: 12px 0 4px;
+  color: #334155;
+}
+
+/* ===== DONKER THEMA ===== */
+
+body {
+  background: #0f172a; /* donker blauw/zwart */
+  color: #e2e8f0;
+}
+
+.hero, .card {
+  background: #1e293b; /* donkergrijs */
+  color: #f1f5f9;
+}
+
+input, textarea {
+  background: #0f172a;
+  color: #f1f5f9;
+  border: 1px solid #334155;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #94a3b8;
+}
+
+.medcard {
+  background: #1e293b;
+  border: 1px solid #334155;
+}
+
+.tabs button {
+  background: #334155;
+  color: #e2e8f0;
+}
+
+.tabs button.active {
+  background: #2563eb;
+  color: white;
+}
+
+.alert {
+  background: #1e293b;
+}
+
+.ok {
+  background: #064e3b;
+  color: #d1fae5;
+}
+
+.warning {
+  background: #78350f;
+  color: #fde68a;
+}
+
+/* knoppen iets moderner */
+button {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+
+/* ===== NIEUWE STATS ===== */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.stat {
+  background: #1e293b;
+  border-radius: 16px;
+  padding: 14px;
+  text-align: center;
+}
+
+.nummer {
+  display: block;
+  font-size: 26px;
+  font-weight: bold;
+  color: #60a5fa;
+}
+
+.label {
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+
+/* ===== DEFINITIEVE STATS FIX ===== */
+
+.stats div {
+  background: #1e293b !important; /* donker ipv wit */
+  border-radius: 18px;
+  padding: 16px;
+  text-align: center;
+}
+
+.stats div::after {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+/* labels toevoegen per blok */
+.stats div:nth-child(1)::after {
+  content: "Personen";
+}
+
+.stats div:nth-child(2)::after {
+  content: "Medicijnen";
+}
+
+.stats div:nth-child(3)::after {
+  content: "Aandacht";
+}
+
+.stats b {
+  font-size: 24px;
+  color: #60a5fa;
+}
+
+
+.persoonknoppen {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.persoonknoppen button {
+  flex: 1;
+  min-width: 160px;
+}
+
+.naamrij {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.delete.small {
+  width: 50px;
+  padding: 10px;
+  font-size: 18px;
+}
+
+
+.modalbg {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  z-index: 9999;
+}
+
+.modal {
+  width: 100%;
+  max-width: 420px;
+  background: #1e293b;
+  color: white;
+  border-radius: 24px;
+  padding: 22px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+}
+
+.modalbuttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.medicijnmelding {
+  background: #fff7ed;
+  color: #7c2d12;
+  border-left: 6px solid #f97316;
+  padding: 12px;
+  border-radius: 14px;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.medicijnmelding a {
+  color: #2563eb;
+}
+
+.suggesties {
+  background: #1e293b;
+  border-radius: 12px;
+  margin-top: 6px;
+  overflow: hidden;
+  border: 1px solid #334155;
+}
+
+.suggesties div {
+  padding: 10px;
+  border-bottom: 1px solid #334155;
+  cursor: pointer;
+}
+
+.suggesties div:hover {
+  background: #334155;
+}
+
+.helpertekst {
+  color: #cbd5e1;
+  text-align: center;
+  margin-top: -6px;
+}
+
+.suggestiebox-echt {
+  display: grid;
+  gap: 8px;
+  margin: 10px 0 14px;
+}
+
+.suggestiebox-echt button {
+  background: #334155;
+  color: white;
+  text-align: left;
+}
+
+.geenmatch {
+  background: #fff7ed;
+  color: #7c2d12;
+  padding: 12px;
+  border-radius: 14px;
+  font-weight: bold;
+}
+
+.medicijnveld {
+  position: relative;
+}
+
+.suggesties {
+  display: grid;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.suggesties button {
+  background: #334155;
+  color: white;
+  text-align: left;
+  padding: 10px 14px;
+}
+
+.geenmatch {
+  background: #fff7ed;
+  color: #7c2d12;
+  padding: 10px;
+  border-radius: 12px;
+  margin-top: 8px;
+  font-weight: bold;
+}
+
+.medicijnveld {
+  width: 100%;
+}
+
+.suggesties {
+  display: grid;
+  gap: 7px;
+  margin-top: 8px;
+}
+
+.suggesties button {
+  background: #334155;
+  color: white;
+  text-align: left;
+}
+
+.geenmatch {
+  background: #fff7ed;
+  color: #7c2d12;
+  padding: 10px;
+  border-radius: 12px;
+  font-weight: bold;
+}
+
+/* ===== MOBIEL FIX: GEEN HORIZONTAAL SCHUIVEN ===== */
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden !important;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.app {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.hero, .card {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.hero h1 {
+  font-size: clamp(32px, 9vw, 54px);
+  line-height: 1.1;
+  word-break: break-word;
+}
+
+.hero p {
+  font-size: clamp(17px, 5vw, 26px);
+  line-height: 1.35;
+}
+
+.stats {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+.tabs {
+  max-width: 100%;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+.tabs button {
+  flex: 0 0 auto;
+  max-width: 150px;
+  white-space: normal;
+}
+
+.grid {
+  grid-template-columns: 1fr !important;
+}
+
+input, textarea, button {
+  max-width: 100%;
+}
+
+.medgrid {
+  grid-template-columns: 1fr !important;
+}
+
+.sharebox {
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .app {
+    padding: 10px;
+  }
+
+  .hero, .card {
+    padding: 14px;
+    border-radius: 18px;
+  }
+
+  .stats {
+    gap: 8px;
+  }
+
+  .stats div {
+    padding: 10px 6px;
+  }
+
+  .stats b {
+    font-size: 22px;
+  }
+
+  .stats span {
+    font-size: 12px;
+  }
+}
+
+.modalbg {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  z-index: 9999;
+}
+
+.modal {
+  width: 100%;
+  max-width: 420px;
+  background: #1e293b;
+  color: white;
+  border-radius: 24px;
+  padding: 22px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+}
+
+.klein {
+  color: #cbd5e1;
+  font-size: 14px;
+}
+
+.modalbuttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 16px;
+}

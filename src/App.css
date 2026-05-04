@@ -605,3 +605,60 @@ input, textarea, button {
   gap: 10px;
   margin-top: 16px;
 }
+
+.reminder-box {
+  margin: 24px auto;
+  padding: 20px;
+  max-width: 900px;
+  border-radius: 20px;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.reminder-box h2 {
+  margin-top: 0;
+}
+
+.reminder-alert {
+  background: #fee2e2;
+  border: 1px solid #fca5a5;
+  padding: 12px;
+  border-radius: 14px;
+  margin-bottom: 14px;
+}
+
+.reminder-form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.reminder-form input {
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+}
+
+.reminder-form button,
+.reminder-item button {
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  font-weight: bold;
+}
+
+.reminder-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 14px;
+  background: white;
+  border: 1px solid #eee;
+}
